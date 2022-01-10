@@ -195,7 +195,7 @@ function fibonacci(n) {
 //console.log(fibonacci(2))
 
 
-//***///https://www.hackerrank.com/challenges/ctci-recursive-staircase/problem?h_l=interview&isFullScreen=true&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=recursion-backtracking
+//****///https://www.hackerrank.com/challenges/ctci-recursive-staircase/problem?h_l=interview&isFullScreen=true&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=recursion-backtracking
 //Solution: https://www.geeksforgeeks.org/count-ways-reach-nth-stair-using-step-1-2-3/
 function stepPerms(n) {
     // Write your code here
@@ -231,7 +231,7 @@ function stepPerms_count(n) {
 // })
 
 
-//https://www.hackerrank.com/challenges/abbr/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dynamic-programming
+//****//https://www.hackerrank.com/challenges/abbr/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dynamic-programming
 /*
  * Complete the 'abbreviation' function below.
  *
@@ -315,7 +315,7 @@ function utopianTree(n) {
 }
 
 
-//https://www.hackerrank.com/challenges/ctci-making-anagrams/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings
+//****//https://www.hackerrank.com/challenges/ctci-making-anagrams/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings
 /*
  * Complete the 'makeAnagram' function below.
  *
