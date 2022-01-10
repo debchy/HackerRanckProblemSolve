@@ -292,7 +292,7 @@ function abbreviation_2(a, b) {
 //console.log(abbreviation_2("KXzQ","K"))
 //console.log(abbreviation_2("beFgH","EFH"))
 //console.log(abbreviation("beFgH","EFH"))
-console.log(abbreviation_2("daBcda","ABC"))
+//console.log(abbreviation_2("daBcda","ABC"))
 //console.log(abbreviation("beFgH","EFG"))
 //console.log(abbreviation_2("hHhAhhcahhacaccacccahhchhcHcahaahhchhhchaachcaCchhchcaccccchhhcaahhhhcaacchccCaahhaahachhacaahhaachhhaaaCalhhchaccaAahHcchcazhachhhaaahaahhaacchAahccacahahhcHhccahaachAchahacaahcahacaahcahacaHhccccaahaahacaachcchhahhacchahhhaahcacacachhahchcaAhhcaahchHhhaacHcacahaccccaaahacCHhChchhhahhchcahaaCccccahhcaachhhacaaahcaaaccccaacaaHachaahcchaahhchhhcahahahhcaachhchacahhahahahAahaAcchahaahcaaaaahhChacahcacachacahcchHcaahchhcahaachnachhhhcachchahhhacHhCcaHhhhcaCccccaaahcahacahchahcaachcchaachahhhhhhhhcahhacacCcchahccaaaaaHhhccaAaaaCchahhccaahhacaccchhcahhcahaahhgacahcahhchcaaAccchahhhaahhccaaHcchaccacahHahChachhcaaacAhacacaacacchhchchacchchcacchachacaahachccchhhaccahcacchaccaahaaaccccccaaaaaaaHhcahcchmcHchcchaaahaccchaaachchHahcaccaaccahcacacahAhaacaacaccaccaaacahhhcacAhaCchcaacCcccachhchchcchhchahchchahchchhchcacaachahhccacachaAhaaachchhchchchhaachahaahahachhaaaccacahhcacchhhaaachaaacAahhcachchachhhcacchacaaChCahhhccahChaachhcahacchanaaacchhhccacacchcahccchAcahacaaachhacchachccaaHacaacAhahcCh",                           "HAHHCHAACCCAHCHHAHHAHCACCHCCHHCAAHHCACCCAHHHACAAHHHHCHHCAHHAHHAAAHAACAAHAHHCAHAHACHACHCHACACHAAHHAAAHCAHHACACAACHHHCHAHCAHCHHHAHAHACCAAAHCHHCHHCCAACCCCAACHACAACAAHACHCHAHHACCHCAHHHAAACHACAACHCACACAHHCCHAHACCCACCAACHCHHHCCCCCHCCAHHCAAHHAHHHHHHHAACCCCAHCCAAAAAHHHAAAACCAHHCAHACACCHHCHAHAHHCHAACHHHHHCCHCCAHAHCHCAAACCACCCCHACCACHHACHHACACHACCAACCCCAAAAHHAHCHHHCCAHCCHACHHAHCCACACCHAHAAACACCCCAHCCAHACCCCCCHCCHHCHHHHCHCHCAHHHACHAHAACCCAAAACHAACAAAHHAAHAAAHACHHCACHCCHCHAACHACACHHCCCCCAHCACHAAAHCHCAHACAAC"))
 
@@ -313,3 +313,32 @@ function utopianTree(n) {
     else if(n%2!=0)return utopianTree(n-1)*2;
     else return utopianTree(n-1)+1;
 }
+
+
+//https://www.hackerrank.com/challenges/ctci-making-anagrams/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings
+/*
+ * Complete the 'makeAnagram' function below.
+ *
+ * The function is expected to return an INTEGER.
+ * The function accepts following parameters:
+ *  1. STRING a
+ *  2. STRING b
+ */
+
+function makeAnagram(a, b) {
+    // Write your code here
+    let aSet=new Set(),bSet=new Set();;
+    for(let i=0;i<a.length;i++)if(aSet[a[i]])aSet[a[i]]++;else aSet[a[i]]=1; 
+    console.log(aSet)
+    for(let i=0;i<b.length;i++)if(bSet[b[i]])bSet[b[i]]++;else bSet[b[i]]=1;
+    console.log(bSet)
+    let notMacthedCount=0;
+    'abcdefghijklmnopqrstuvwxyz'.split('').forEach(a=>{
+        if(aSet[a]==undefined && bSet[a]==undefined);
+        else notMacthedCount+=Math.abs( (aSet[a]||0)-(bSet[a]||0));
+    })
+
+    return notMacthedCount;
+}
+//console.log(makeAnagram('fcrxzwscanmligyxyvym','jxwtrhvujlmrpdoqbisbwhmgpmeoke'))
+console.log(makeAnagram('cde','abc'))
