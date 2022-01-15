@@ -17,7 +17,7 @@ namespace HackerRank
         }
         
         /* checkMagazine    * https://www.hackerrank.com/challenges/ctci-ransom-note/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dictionaries-hashmaps
-        * Complete the 'checkMagazine' function below.
+        * Match exact words between two sentence.
         *
         * The function accepts following parameters:
         *  1. STRING_ARRAY magazine
@@ -75,11 +75,8 @@ namespace HackerRank
         }
 
 
-        /*sherlockAndAnagrams https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dictionaries-hashmaps
-        * Complete the 'sherlockAndAnagrams' function below.
-        *
-        * The function is expected to return an INTEGER.
-        * The function accepts STRING s as parameter.
+        /*****sherlockAndAnagrams https://www.hackerrank.com/challenges/sherlock-and-anagrams/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=dictionaries-hashmaps
+        * Given a string of lower alphabet characters, count total substring of this string which are anagram to each other.
         */
 
         public static int sherlockAndAnagrams(string s)
@@ -123,7 +120,7 @@ namespace HackerRank
             return retVal;
         }
 
-
+        /*Solution referance: https://www.geeksforgeeks.org/count-total-anagram-substrings/*/
         public static int sherlockAndAnagrams_2(string s)
         {
             var count=0;
