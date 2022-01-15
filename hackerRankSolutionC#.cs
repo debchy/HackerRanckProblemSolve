@@ -151,20 +151,23 @@ namespace HackerRank
             }
             return count;
         }
-    }
 
 
-    //Maximum number of toy: https://www.hackerrank.com/challenges/mark-and-toys/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
-    public static int maximumToys(List<int> prices, int k)
-    {
-        int max=0,totalCost=0;
-        prices.Sort();
-        for(int i=0;i<prices.Count;i++){
-            totalCost+=prices[i];
-            if(totalCost>k)return i;
-            Console.Write(prices[i]+" ");
+        //Maximum number of toy: https://www.hackerrank.com/challenges/mark-and-toys/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=sorting
+        public static int maximumToys(List<int> prices, int k)
+        {
+            int max=0,totalCost=0;
+            prices.Sort();
+            for(int i=0;i<prices.Count;i++){
+                totalCost+=prices[i];
+                if(totalCost>k)return i;
+                Console.Write(prices[i]+" ");
+            }
+            return max;
         }
-        return max;
+
+
     }
+
 
 }
