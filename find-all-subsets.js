@@ -1,3 +1,4 @@
+// Print all subsets of a given set: https://afteracademy.com/blog/print-all-subsets-of-a-given-set
 let get_bit = function(num, bit) {
     let temp = (1 << bit);
     temp = temp & num;
