@@ -183,6 +183,39 @@ namespace HackerRank
 
             return count;
         }
+
+        //**** https://www.hackerrank.com/challenges/sherlock-and-valid-string/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings
+        //Sherlock and the Valid String:
+        //Sherlock considers a string to be valid if all characters of the string appear 
+        //the same number of times. It is also valid if he can remove just 1 character at 1 index 
+        //in the string, and the remaining characters will occur the same number of times.
+        public static string isValid_SherlockString(string s)
+        {
+            Dictionary<int, int> dic=new Dictionary<int, int>();
+            int minCount=s.Length,maxCount=0;
+            for(int i=97;i<123;i++){
+                int count=s.Count(c=>c==i);
+                if(count>0){
+                    if(minCount>=count)minCount = count;
+                    if(maxCount<count)maxCount=count;
+                    if(dic.ContainsKey(count))dic[count]++;else dic[count]=1;                
+                }            
+            }
+            Console.WriteLine("Dic");
+            foreach( int key in dic.Keys){
+                Console.WriteLine(key+"=>"+dic[key]);
+            }
+            int minCountCharLength=dic[minCount];
+            int maxCountCharLength=dic[maxCount];
+            
+            if(maxCount==minCount){
+                return "YES";
+            }else{
+                if(dic.Count==2&& maxCountCharLength==1 && maxCount-minCount==1)return "YES";
+                else if(dic.Count==2 && minCountCharLength==1 &&  minCount==1)return "YES";
+                else return "NO";
+            }
+        }
     }
 
 
