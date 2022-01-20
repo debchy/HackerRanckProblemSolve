@@ -216,6 +216,38 @@ namespace HackerRank
                 else return "NO";
             }
         }
+
+        //**** Special string.
+        //find substing from a string. pattern: aaa, aba, aabaa, a,b
+        //https://www.hackerrank.com/challenges/special-palindrome-again/problem?h_l=interview&isFullScreen=false&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings
+        static long substrCount(int n, string s) {
+            long total = n;
+            //case 1: all substring are same character.
+            int i=0;
+            while(i<n-1){
+                int substringLength=1;
+                while(i<n-1 && s[i]==s[i+1]){
+                    substringLength++;
+                    i++;    
+                }
+                total+=substringLength*(substringLength-1)/2;  
+                i++;           
+            }
+            //for aba, aabaa conditions, need to backtrack and forward track to match palindrone pattern
+            int start=1;
+            for(i=1;i<n-1;i++){
+                while((i+start<n && i-start>=0)  && s[i-start]==s[i+start] && s[i]!=s[i-start]){
+                    //give condition to brak abCba pattern
+                    if(start>1 && s[i-start]!=s[i-start+1])break;
+                    total++;
+                    start++;
+                }
+                //Console.WriteLine("i="+i+" start="+start);
+                start=1;
+            }
+            
+            return total;
+        }
     }
 
 
