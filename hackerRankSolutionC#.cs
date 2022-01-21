@@ -248,6 +248,26 @@ namespace HackerRank
             
             return total;
         }
+
+
+        //* Beautiful Binary String:
+        //https://www.hackerrank.com/challenges/beautiful-binary-string/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+        //Alice has a binary string. She thinks a binary string is beautiful if and only if 
+        //it doesn't contain the substring 010.
+        //In one step, Alice can change a  to a  or vice versa. Count and print the 
+        //minimum number of steps needed to make Alice see the string as beautiful.
+        //0101010 => 0111011 
+        public static int beautifulBinaryString(string b)
+        {
+            int count=0;
+            for(int i=0;i<b.Length-2;i++){
+                if(b[i]=='0' && b[i+1]=='1' && b[i+2]=='0'){
+                    count++;
+                    i+=2;
+                }
+            }
+            return count;
+        }
     }
 
 
