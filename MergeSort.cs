@@ -94,26 +94,48 @@ namespace HackerRankingSolution
             return swap_count;
         }
 
-        private static long merge_opt(List<int> main_arr, List<int> left_arr, List<int> right_arr, int mid)
-        {            
-            long swap_count = 0;
-            int arr_length = main_arr.Count;
-            int left_ptr = 0, right_ptr = 0, right_range = arr_length - mid;
-
-            for(int i = 0; i < arr_length; i++)
+        private static int merge_opt(List<int> arr, List<int> left, List<int> right)
+        {
+            int totalSwap = 0;
+            int i = 0, j = 0;
+            //Console.WriteLine("Left=" + left.Count + " right=" + right.Count + " mid=" + mid + " right_range=" + right_range);
+            for (int n = 0; n < arr.Count; n++)
             {
-                if (left_ptr < mid && (right_ptr >= right_range || left_arr[left_ptr]<=right_arr[right_ptr]))
+                //Console.WriteLine("i=" + i + " j=" + j);
+                if (i < left.Count && (j >= right.Count || left[i] <= right[j]))
                 {
-                    main_arr[i] = left_arr[left_ptr++];
-                    swap_count += right_ptr;
+                    arr[n] = left[i++];
+                    totalSwap += j;
                 }
-                else if (right_ptr < right_range)
+                else if (j < right.Count)
                 {
-                    main_arr[i] = right_arr[right_ptr++];
+                    arr[n] = right[j++];
                 }
             }
 
-            return swap_count;
+            return totalSwap;
         }
+
+        // private static long merge_opt(List<int> main_arr, List<int> left_arr, List<int> right_arr, int mid)
+        // {            
+        //     long swap_count = 0;
+        //     int arr_length = main_arr.Count;
+        //     int left_ptr = 0, right_ptr = 0, right_range = arr_length - mid;
+
+        //     for(int i = 0; i < arr_length; i++)
+        //     {
+        //         if (left_ptr < mid && (right_ptr >= right_range || left_arr[left_ptr]<=right_arr[right_ptr]))
+        //         {
+        //             main_arr[i] = left_arr[left_ptr++];
+        //             swap_count += right_ptr;
+        //         }
+        //         else if (right_ptr < right_range)
+        //         {
+        //             main_arr[i] = right_arr[right_ptr++];
+        //         }
+        //     }
+
+        //     return swap_count;
+        // }
     }
 }
