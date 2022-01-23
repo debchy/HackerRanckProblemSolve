@@ -120,7 +120,7 @@ namespace HackerRank
             return retVal;
         }
 
-        /*Solution referance: https://www.geeksforgeeks.org/count-total-anagram-substrings/*/
+        /****Solution referance: https://www.geeksforgeeks.org/count-total-anagram-substrings/*/
         public static int sherlockAndAnagrams_2(string s)
         {
             var count=0;
@@ -237,6 +237,54 @@ namespace HackerRank
                 }
             }
             return count;
+        }
+
+        /**** Lily's Homework: https://www.hackerrank.com/challenges/lilys-homework/problem?isFullScreen=true&utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+        George can swap any two elements of the array any number of times. 
+        An array is beautiful if the sum of |arr[i]-arr[i-1]| among 0<i<n is minimal.
+
+        Given the array "arr", determine and return the minimum number of swaps that should be performed 
+        in order to make the array beautiful.
+        example: 3 4 2 5 1 => 2 swap
+                 2 5 3 1   => 2 swap
+        */
+        public static int lilysHomework(List<int> arr)
+        {        
+            int val=minSwap(arr.ToArray());
+            int val2=minSwap(arr.ToArray(),true);
+            return Math.Min(val, val2);
+        }
+        public static int minSwap(int[] nums, bool isReverse=false){
+            int[] nums_copy=new int[nums.Length];
+            nums.CopyTo(nums_copy, 0);
+            if(isReverse){
+                Array.Sort(nums, new Comparison<int>((a,b)=>{return b.CompareTo(a);}));
+            }
+            else Array.Sort(nums);
+            int changes=0;
+            
+            Dictionary<int, int> hm=new Dictionary<int, int>();
+            for(int i=0;i<nums_copy.Length;i++){
+                hm[nums_copy[i]]=i;
+            }
+            
+            for(int i=0;i<nums_copy.Length;i++){
+                if(nums_copy[i]!=nums[i]){
+                    //as the sorted value and real value is not same
+                    //exchange the pointer of both value in hash_map
+                    int indexOfCurrent=hm[nums_copy[i]];
+                    int indexOfOld=hm[nums[i]];
+                    hm[nums_copy[i]]=indexOfOld;
+                    hm[nums[i]]=indexOfCurrent;
+                    //swap the position of both value
+                    int tmp=nums_copy[i];                
+                    nums_copy[i]=nums_copy[indexOfOld];
+                    nums_copy[indexOfOld]=tmp;
+                    changes++;
+                }
+            }
+            
+            return changes;
         }
     }
 
