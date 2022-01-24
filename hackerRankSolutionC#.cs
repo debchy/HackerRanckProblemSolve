@@ -286,6 +286,30 @@ namespace HackerRank
             
             return changes;
         }
+
+        /**https://www.hackerrank.com/challenges/gem-stones/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
+        arr=["abca","abcb","bc"] - here bc is common in all three element. so 2 jemstones. 
+        Find Jemstones. Node: a char can occur multiple times in same sting.
+        */
+        public static int gemstones(List<string> arr)
+        {
+            Dictionary<char, int> ht=new Dictionary<char, int>();
+            int commons=0;
+            for(int i='a';i<='z';i++){
+                char c=(char)i;
+                ht.Add(c,0);
+                for(int j=0;j<arr.Count;j++){
+                    if(arr[j].IndexOf(c)!=-1){
+                        ht[c]++;
+                    }                
+                }
+                if(ht[c]==arr.Count)commons++;
+            }
+            
+            return commons;
+        }
+
+        
     }
 
 
