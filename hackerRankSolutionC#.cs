@@ -309,7 +309,26 @@ namespace HackerRank
             return commons;
         }
 
-        
+
+        /**https://www.hackerrank.com/challenges/making-anagrams/problem?isFullScreen=true
+        Given two strings, s1 and s2, that may not be of the same length, 
+        determine the minimum number of character deletions required to make s1 and s2 anagrams. 
+        Any characters can be deleted from either of the strings.
+        In other words, both strings must contain the same exact letters in the same exact frequency. 
+        For example, bacdc and dcbac are anagrams, but bacdc and dcbad are not.
+        EXample: s1=abc, s2=amnop. Output=6
+        */
+        public static int makingAnagrams(string s1, string s2)
+        {        
+            int notMatched=0;
+            for(int i='a';i<='z';i++){
+                char c=(char)i;
+                int c1=s1.Count(a=>a==c);
+                int c2=s2.Count(a=>a==c);
+                notMatched+=Math.Abs(c1-c2);
+            }
+            return notMatched;
+        }
     }
 
 
