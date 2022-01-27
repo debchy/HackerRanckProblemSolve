@@ -329,6 +329,40 @@ namespace HackerRank
             }
             return notMatched;
         }
+
+        /*** pairs https://www.hackerrank.com/challenges/pairs/problem?h_l=interview&isFullScreen=true&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=search
+        Given an array of integers and a target value, determine the number of pairs of array 
+        elements that have a difference equal to the target value.
+        example: k=2 arr = [1, 5, 3, 4, 2]
+        There are 3 pairs of integers in the set with a difference of 2: [5,3], [4,2] and [3,1]
+        */
+        public static int pairs(int k, List<int> arr)
+        {
+            //sort descending
+            arr.Sort((a,b)=>b-a);
+            int totalPair=0, max=arr[0],min=arr.Last();
+            Dictionary<int, int> hm=new Dictionary<int, int>();
+            for(int i=0;i<arr.Count;i++){
+                if(hm.ContainsKey(arr[i])){
+                    hm[arr[i]]++;                
+                }
+                else hm.Add(arr[i], 1);   
+            }
+            //just find the subtracted value of each key is already exist or not
+            foreach(int key in hm.Keys){
+                Console.WriteLine(key+"="+hm[key]);
+                int sub=key-k;
+                //as I have a sorted array, I can omit the subtraction that is less then min value
+                if(sub>=min){
+                    //here we go
+                    if(hm.ContainsKey(sub)){
+                        totalPair++;
+                    }                
+                }
+                else break;
+            }
+            return totalPair;
+        }
     }
 
 
