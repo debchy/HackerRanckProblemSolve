@@ -128,4 +128,58 @@ namespace HackerRank
             }
         }
     }
+
+    /**** Tripple Sum: https://www.hackerrank.com/challenges/triple-sum/problem?isFullScreen=true&h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=search
+     Given 3 arrays a,b,c of different sizes, find the number of distinct triplets (p,q,r) 
+    where p is an element of a, written as p=>a, q=>b , and r=>c, satisfying the criteria: p<=q and q>=r. 
+
+    For example, given a=[3,5,7], b=[3,6] and c=[4,6,9], we find four distinct triplets:
+    (3,6,4),(3,6,6),(3,6,9), (5,6,6)
+     */
+    public class TrippleSum
+    {
+        // Complete the triplets function below.    
+        static long triplets(int[] a, int[] b, int[] c)
+        {
+            Array.Sort(a);
+            Array.Sort(c);
+
+            List<int> a_dic = a.Distinct().ToList();
+            List<int> b_dic = b.Distinct().ToList();
+            List<int> c_dic = c.Distinct().ToList();
+
+            long matches = 0;
+            int aCount = 0, cCount = 0;
+            foreach (var bkey in b_dic)
+            {
+                aCount = BinarySearchSpecial(a_dic, bkey);//a_dic.Count(s=>s<=bkey);
+                cCount = BinarySearchSpecial(c_dic, bkey);//c_dic.Count(s=>s<=bkey);
+                matches += ((long)aCount * (long)cCount);
+                aCount = 0; cCount = 0;
+            }
+            return matches;
+        }
+
+        /*This will return the exact position or 
+        if not found it will return The much element is smaller than the key*/
+        public static int BinarySearchSpecial(List<int> list, int key)
+        {
+            int start = 0, end = list.Count - 1, mid = (start + end) / 2;
+            while (start <= end)
+            {
+                if (list[mid] == key) return mid + 1;
+                else if (list[mid] < key)
+                {
+                    start = mid + 1;
+                }
+                else
+                {
+                    end = mid - 1;
+                }
+                mid = (start + end) / 2;
+            }
+
+            return end + 1;
+        }
+    }
 }
