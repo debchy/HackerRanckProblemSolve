@@ -363,6 +363,35 @@ namespace HackerRank
             }
             return totalPair;
         }
+
+        /******* sherlock-and-array : https://www.hackerrank.com/challenges/sherlock-and-array/problem
+        Watson gives Sherlock an array of integers. His challenge is to find an element
+         of the array such that the sum of all elements to the left is equal to the sum of 
+         all elements to the right.
+         -You will be given arrays of integers and must determine whether there is an element 
+         that meets the criterion. If there is, return YES. Otherwise, return NO.
+         example: arr=[5,6,8,11] - 8 is between two subarrays that sum to 11.
+        */
+        public static string balancedSums(List<int> arr)
+        {
+            int i=0,j=1;
+            long left=0, right=0;
+            //first accumulate all values except first value.
+            for(i=1;i<arr.Count;i++)right+=(long)arr[i];
+            
+            if(left==right)return "YES";
+            
+            //reduce value from right and increate value from left gradually
+            //if they matched, return yes
+            for(i=0,j=1;j<arr.Count;i++,j++){
+                right-=(long)arr[j];
+                left+=(long)arr[i];
+                if(left==right)return "YES";
+            }
+            
+            return "NO";
+        }
+
     }
 
 
