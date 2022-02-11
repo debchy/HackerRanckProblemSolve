@@ -392,6 +392,40 @@ namespace HackerRank
             return "NO";
         }
 
+
+        /** Cavity Map: https://www.hackerrank.com/challenges/cavity-map/problem
+        You are given a square map as a matrix of integer strings. Each cell of the map has a value denoting its depth. We will call a cell of the map a cavity if and only if this cell is not on the border of the map and each cell adjacent to it has strictly smaller depth. Two cells are adjacent if they have a common side, or edge.
+
+        Find all the cavities on the map and replace their depths with the uppercase character X
+        Example: grid=['989','191','111']
+        result: grid=['989','1X1','111']
+        The center cell was deeper than those on its edges: [8,1,1,1]. The deep cells in the top two corners do not share an edge with the center cell, and none of the border cells is eligible
+        */
+        public static List<string> cavityMap(List<string> grid)
+        {
+            List<string> final=new List<string>();
+            final.Add(grid[0]);
+            if(grid.Count>2){
+                for(int i=1;i<grid.Count-1;i++){
+                    char[] current=grid[i].ToCharArray();
+                    
+                    for(int j=1;j<current.Length-1;j++){
+                        if((current[j]>current[j-1] && current[j]>current[j+1]) &&
+                        (current[j]>grid[i-1][j] && current[j]>grid[i+1][j])   
+                        ){
+                            current[j]='X';
+                            j++;
+                        }
+                    }
+                    final.Add(new String(current));
+                    
+                }
+            }
+            if(grid.Count>1)final.Add(grid[grid.Count-1]);
+            
+            return final;
+        }
+
     }
 
 
