@@ -181,5 +181,31 @@ namespace HackerRank
 
             return end + 1;
         }
+
+        
+        /** This will compare a key to find the exact element that is greater than it. if not found any greater, it will return -1
+         Console.WriteLine(BinarySearchSpecial_getGreater(new List<long>{ 1, 1, 2, 2, 3, 3 }, 2)); => output 3
+            Console.WriteLine(BinarySearchSpecial_getGreater(new List<long> { 1, 1, 2, 2, 3, 3 }, 3)); => output -1
+            Console.WriteLine(BinarySearchSpecial_getGreater(new List<long> { 1, 1, 2, 2, 3, 3 }, 0)); => output 1
+         */
+        public static long BinarySearchSpecial_getGreater(List<long> list, long key)
+        {
+            int start = 0, end = list.Count - 1, mid = (start + end) / 2;
+            while (start <= end)
+            {
+                if (list[mid] <= key)
+                {
+                    start = mid + 1;
+                }
+                else
+                {
+                    end = mid - 1;
+                }
+                mid = (start + end) / 2;
+            }
+
+            if (end + 1 < list.Count) return list[end + 1];
+            else return -1;
+        }
     }
 }
