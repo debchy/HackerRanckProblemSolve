@@ -207,5 +207,32 @@ namespace HackerRank
             if (end + 1 < list.Count) return list[end + 1];
             else return -1;
         }
+
+        /** make a sorted list by inserting key with binary search. this will remove duplicate*/
+        public static List<long> BinarySearchSpecial_InsertOrderly(List<long> list, long key)
+        {
+            int start = 0, end = list.Count - 1, mid = (start + end) / 2;
+            while (start <= end)
+            {
+                if (list[mid] == key)
+                {
+                    return list; // this condition will remove duplicate element
+                }
+                else if (list[mid] < key)
+                {
+                    start = mid + 1;
+                }
+                else
+                {
+                    end = mid - 1;
+                }
+                mid = (start + end) / 2;
+            }
+
+            list.Insert(end + 1, key);
+            //else return -1;
+
+            return list;
+        }
     }
 }
